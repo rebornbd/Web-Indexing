@@ -5,7 +5,5 @@ from . import views
 app_name = 'web_indexing'
 
 urlpatterns = [
-    path('', views.WIList.as_view(), name='list'),
-    # path('', views.WebIndexingListView, name='list'),
-
+    path('list', views.WIList.as_view(), name='list'),
 ]
