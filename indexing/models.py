@@ -1,6 +1,7 @@
 from django.db import models
 
-class WebIndexing(models.Model):
+
+class WIModel(models.Model):
   title       = models.CharField(max_length=250, blank=True, null=True)
   description = models.TextField(blank=True, null=True)
 

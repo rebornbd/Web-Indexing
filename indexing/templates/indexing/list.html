@@ -1,0 +1,18 @@
+<form method="GET" action="{% url 'web_indexing:list' %}">
+    {% csrf_token %}
+    <input type="text" name="link" placeholder="enter valid url" />
+
+    <button type="submit">SUBMIT</button>
+</form>
+<br />
+<br />
+
+<h1>{{ url }}</h1>
+{% for link in links %}
+
+    {{ link }}
+    <br />
+
+{% empty %}
+    <h5>tag list is empty</h5>
+{% endfor %}
