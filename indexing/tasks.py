@@ -48,7 +48,7 @@ def title_desc(url):
     soup = BeautifulSoup(response.content, "html.parser")
 
     title = getTitle(soup.title.text, url)
-    desc  = soup.text[:300]
+    desc  = soup.text[:1000]
 
     return title, desc
 

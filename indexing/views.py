@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import WIModel
-from .serializers import WISerializer, wi_link_serializer
+from .serializers import wi_link_serializer
 import json
 from .tasks import url_validator, webIndexingTask
 

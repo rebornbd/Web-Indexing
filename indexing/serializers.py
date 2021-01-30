@@ -7,8 +7,3 @@ def wi_link_serializer(links, title, desc):
     mylinks.append(link)
   
   return [{'title': title, 'desc': desc, 'links': [mylinks]}]
-
-class WISerializer(serializers.ModelSerializer):
-  class Meta:
-    model = WIModel
-    fields = '__all__'
