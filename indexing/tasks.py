@@ -20,7 +20,7 @@ def webIndexingTask(url):
         myurl = urljoin(url, mylink)
 
         if (url_validator(myurl)):
-          links.add(myurl)
+          links.add(mylink)
         
         mylinks     = list(links)
         parse_links = json.dumps(mylinks)
@@ -34,12 +34,36 @@ def webIndexingTask(url):
             wi.save()
         
         else:
-          wi = WIModel(link=str(url), parse_links=parse_links, title='title', description='description')
+          title, desc = title_desc(url)
+          wi = WIModel(link=str(url), parse_links=parse_links, title=title, description=desc)
           wi.save()
     
     except Exception as e:
       print(e)
 
+
+def title_desc(url):
+  try:
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, "html.parser")
+
+    title = getTitle(soup.title.text, url)
+    desc  = soup.text[:300]
+
+    return title, desc
+
+  except Exception as e:
+    print(e)
+
+
+def getTitle(title, url):
+  if (title == "" or title == None):
+    domain = urlparse(url).netloc
+    return domain
+  return title[:150]
+
+def getDesc():
+  pass
 
 # check url validity
 def url_validator(url):
